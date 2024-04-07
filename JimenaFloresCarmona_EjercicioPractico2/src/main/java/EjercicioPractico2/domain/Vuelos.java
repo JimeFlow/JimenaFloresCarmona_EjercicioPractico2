@@ -39,12 +39,11 @@ public class Vuelos implements Serializable {
     public Vuelos() {
     }
 
-    public Vuelos(Long idVuelo, String numeroVuelo, String destino, String modeloAvion, boolean activo) {
+    public Vuelos(Long idVuelo, String numeroVuelo, String destino, String modeloAvion) {
         this.idVuelo = idVuelo;
         this.numeroVuelo = numeroVuelo;
         this.destino = destino;
         this.modeloAvion = modeloAvion;
-        this.activo = activo;
     }
 
     public static long getSerialVersionUID() {

@@ -1,8 +1,8 @@
 package EjercicioPractico2.service.impl;
 
-//import EjercicioPractico2.dao.RolDao;
+import EjercicioPractico2.dao.RolDao;
 import EjercicioPractico2.dao.UsuarioDao;
-//import EjercicioPractico2.domain.Rol;
+import EjercicioPractico2.domain.Rol;
 import EjercicioPractico2.domain.Usuario;
 import EjercicioPractico2.service.UsuarioService;
 import java.util.List;
@@ -16,7 +16,7 @@ public abstract class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioDao usuarioDao;
     @Autowired
-    //private RolDao rolDao;
+    private RolDao rolDao;
 
     @Override
     @Transactional(readOnly = true)
@@ -59,11 +59,11 @@ public abstract class UsuarioServiceImpl implements UsuarioService {
     public void save(Usuario usuario, boolean idRolUser) {
         usuario = usuarioDao.save(usuario);
         if (idRolUser) {  //Si se está creando el usuario, se crea el rol por defecto "USER"
-            //Rol rol = new Rol();
-            //rol.setNombre("ROLE_USER");
+            Rol rol = new Rol();
+            rol.setNombre("ROLE_USER");
             
-            //rol.setIdUsuario(usuario.getIdUsuario().toString()); //Conversion Long to String
-            //rolDao.save(rol);
+            rol.setIdUsuario(usuario.getIdUsuario().toString()); //Conversion Long to String
+            rolDao.save(rol);
         }
     }
 

@@ -82,14 +82,18 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/usuario/nuevo", "/usuario/guardar",
                         "/usuario/modificar/**", "/usuario/eliminar/**",
                         
+                        "/cliente/nuevo", "/cliente/guardar",
+                        "/cliente/modificar/**", "/cliente/eliminar/**",
+                        
                         "/reportes/**", "/continue/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/vuelos/listado",
                         "/prereservas/listado?continue",
-                        "/reservas/listado",
-                        "/usuario/listado"
-                ).hasAnyRole("ADMIN", "VENDEDOR")
+                        "/reservas/listado?continue",
+                        "/usuario/listado",
+                        "/cliente/listado"
+                ).hasAnyRole("ADMIN", "CLIENTE")
                 .requestMatchers("/facturar/compra")
                 .hasRole("USER")
                 )
@@ -106,12 +110,12 @@ public class ProjectConfig implements WebMvcConfigurer {
         UserDetails admin = User.builder()
                 .username("jimena")
                 .password("{noop}123")
-                .roles("USER", "VENDEDOR", "ADMIN")
+                .roles("USER", "CLIENTE", "ADMIN")
                 .build();
         UserDetails sales = User.builder()
                 .username("kevin")
                 .password("{noop}456")
-                .roles("USER", "VENDEDOR")
+                .roles("USER", "CLIENTE")
                 .build();
         UserDetails user = User.builder()
                 .username("paris")

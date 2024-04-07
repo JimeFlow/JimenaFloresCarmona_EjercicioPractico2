@@ -15,13 +15,13 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable {
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long idCliente;
 
     @NotEmpty
     private String nombre;
@@ -30,11 +30,11 @@ public class Usuario implements Serializable {
     private String telefono;
     private String NombreUsuario;
     private String contrasena;
-    private int idRolUsuario;
+    private int idRolCliente;
     private boolean activo;
     
     @OneToMany
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_cliente")
     private List<Rol> roles;
     
 }
