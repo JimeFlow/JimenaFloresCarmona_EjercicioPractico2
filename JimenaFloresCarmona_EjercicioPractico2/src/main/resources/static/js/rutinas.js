@@ -2,7 +2,8 @@
  * En las compras utilizando un llamado "ajax" */
 function addCard(formulario) {
     var valor = formulario.elements[0].value;
-    var url = '/compras/agregar';
+    var url = '/prereservas/agregar';
+    var url = '/reservas/agregar';
     url = url + '/' + valor;
     $("#resultsBlock").load(url);
 }

@@ -26,7 +26,6 @@ public class Vuelos implements Serializable {
     private Date fechaSalida;
     private Date fechaLlegada;
     private String modeloAvion;
-    private String rutaVuelo;
     private boolean activo;
 
     //@OneToMany
@@ -40,21 +39,16 @@ public class Vuelos implements Serializable {
     public Vuelos() {
     }
 
-    public Vuelos(Long idVuelo, String numeroVuelo, String destino, String modeloAvion, String rutaVuelo, boolean activo) {
+    public Vuelos(Long idVuelo, String numeroVuelo, String destino, String modeloAvion, boolean activo) {
         this.idVuelo = idVuelo;
         this.numeroVuelo = numeroVuelo;
         this.destino = destino;
         this.modeloAvion = modeloAvion;
-        this.rutaVuelo = rutaVuelo;
         this.activo = activo;
     }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public void setRutaVuelo(String rutaVuelo) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

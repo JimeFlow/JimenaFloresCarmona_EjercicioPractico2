@@ -1,4 +1,4 @@
-package JimenaFloresCarmona_EjercicioPractico2;
+package EjercicioPractico2_JimenaFloresCarmona;
 
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,8 +74,10 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/vuelos/nuevo", "/vuelos/guardar",
                         "/vuelos/modificar/**", "/vuelos/eliminar/**",
                         
-                        //"/producto/nuevo", "/producto/guardar",
-                        //"/producto/modificar/**", "/producto/eliminar/**",
+                        "/prereservas/nuevo", "/prereservas/guardar",
+                        "/prereservas/modificar/**", "/prereservas/eliminar/**",
+                        "/reservas/nuevo", "/reservas/guardar",
+                        "/reservas/modificar/**", "/reservas/eliminar/**",
                         
                         "/usuario/nuevo", "/usuario/guardar",
                         "/usuario/modificar/**", "/usuario/eliminar/**",
@@ -84,8 +86,8 @@ public class ProjectConfig implements WebMvcConfigurer {
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/vuelos/listado",
-                        //"/producto/listado?continue",
-                        //"/producto/listado",
+                        "/prereservas/listado?continue",
+                        "/reservas/listado",
                         "/usuario/listado"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers("/facturar/compra")

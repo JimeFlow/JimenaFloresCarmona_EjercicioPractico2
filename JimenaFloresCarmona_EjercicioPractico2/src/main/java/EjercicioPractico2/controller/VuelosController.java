@@ -39,7 +39,7 @@ public class VuelosController {
             @RequestParam("rutaVuelo") String rutaVuelo) {        
         if (rutaVuelo != null && !rutaVuelo.isEmpty()) {
             vuelosService.save(vuelos);
-            vuelos.setRutaVuelo(rutaVuelo);
+            vuelos.setDestino(rutaVuelo);
         }
         vuelosService.save(vuelos);
         return "redirect:/vuelos/listado";
