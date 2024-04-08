@@ -1,8 +1,8 @@
 package EjercicioPractico2.controller;
 
-import EjercicioPractico2.domain.Prereservas;
+import EjercicioPractico2.domain.Reservas;
 import EjercicioPractico2.service.VuelosService;
-import EjercicioPractico2.service.PrereservasService;
+import EjercicioPractico2.service.ReservasService;
 //import com.tienda.service.impl.FirebaseStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,59 +13,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/prereservas")
-public class PrereservasController {
+@RequestMapping("/reservas")
+public class ReservasController {
   
     @Autowired
-    private PrereservasService prereservasService;
+    private ReservasService reservasService;
     @Autowired
     private VuelosService vuelosService;
     
     @GetMapping("/listado")
     private String listado(Model model) {
-        var prereservas = prereservasService.getPrereservas(false);
-        model.addAttribute("prereservas", prereservas);
+        var reservas = reservasService.getReservas(false);
+        model.addAttribute("reservas", reservas);
         
         var vuelos = vuelosService.getVuelos(false);
         model.addAttribute("vuelos", vuelos);
         
-        model.addAttribute("totalPrereservas",prereservas.size());
-        return "/prereservas/listado";
+        model.addAttribute("totalReservas",reservas.size());
+        return "/reservas/listado";
     }
     
      @GetMapping("/nuevo")
-    public String prereservasNuevo(Prereservas prereservas) {
-        return "/prereservas/modifica";
+    public String reservasNuevo(Reservas reservas) {
+        return "/reservas/modifica";
     }
 
     @Autowired
     //private FirebaseStorageServiceImpl firebaseStorageService;
     
     @PostMapping("/guardar")
-    public String prereservasGuardar(Prereservas prereservas,
+    public String reservasGuardar(Reservas reservas,
             @RequestParam("idVuelo") int idVuelo,
             @RequestParam("idCliente") int idCliente) {
         if (idVuelo != 0 && idCliente != 0) {
-            prereservasService.save(prereservas);
-            prereservas.setIdVuelo(idVuelo, 
-                    prereservas.getIdPrereserva());
-            prereservas.setIdCliente(idCliente,
-                    prereservas.getIdPrereserva());
+            reservasService.save(reservas);
+            reservas.setIdVuelo(idVuelo, 
+                    reservas.getIdReserva());
+            reservas.setIdCliente(idCliente,
+                    reservas.getIdReserva());
         }
-        prereservasService.save(prereservas);
-        return "redirect:/prereservas/listado";
+        reservasService.save(reservas);
+        return "redirect:/reservas/listado";
     }
 
     @GetMapping("/eliminar/{idPrereserva}")
-    public String prereservasEliminar(Prereservas prereservas) {
-        prereservasService.delete(prereservas);
-        return "redirect:/prereservas/listado";
+    public String prereservasEliminar(Reservas reservas) {
+        reservasService.delete(reservas);
+        return "redirect:/reservas/listado";
     }
 
-    @GetMapping("/modificar/{idPrereserva}")
-    public String prereservasModificar(Prereservas prereservas, Model model) {
-        prereservas = prereservasService.getPrereserva(prereservas);
-        model.addAttribute("prereservas", prereservas);
+    @GetMapping("/modificar/{idReserva}")
+    public String reservasModificar(Reservas reservas, Model model) {
+        reservas = reservasService.getReserva(reservas);
+        model.addAttribute("reservas", reservas);
         
         var vuelos = vuelosService.getVuelos(false);
         model.addAttribute("vuelos", vuelos);

@@ -67,7 +67,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         http
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**",
-                        "/prereservas/**", "/reservas/**", "/reportes/**",
+                        "/prereservas/**", "/reservas/**",
                         "/registro/**", "/js/**", "/webjars/**")
                         .permitAll()
                 .requestMatchers(
@@ -76,6 +76,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         
                         "/prereservas/nuevo", "/prereservas/guardar",
                         "/prereservas/modificar/**", "/prereservas/eliminar/**",
+                        
                         "/reservas/nuevo", "/reservas/guardar",
                         "/reservas/modificar/**", "/reservas/eliminar/**",
                         
@@ -85,7 +86,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/cliente/nuevo", "/cliente/guardar",
                         "/cliente/modificar/**", "/cliente/eliminar/**",
                         
-                        "/reportes/**", "/continue/**"
+                        "/continue/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/vuelos/listado",

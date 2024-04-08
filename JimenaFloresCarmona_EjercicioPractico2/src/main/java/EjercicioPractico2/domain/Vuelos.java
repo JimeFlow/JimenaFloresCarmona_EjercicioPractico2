@@ -35,9 +35,9 @@ public class Vuelos implements Serializable {
     @JoinColumn(name = "id_vuelo", updatable = false)
     List<Prereservas> prereservas;
     
-    //@OneToMany
-    //@JoinColumn(name = "id_vuelo", updatable = false)
-    //List<Reservas> reservas;
+    @OneToMany
+    @JoinColumn(name = "id_vuelo", updatable = false)
+    List<Reservas> reservas;
     
     public Vuelos() {
     }
