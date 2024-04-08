@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
-//import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -19,6 +20,8 @@ public class Vuelos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_vuelo")
     private Long idVuelo;
+    
+    @NotEmpty
     private String numeroVuelo;
     private String destino;
     private String lugarSalida;
@@ -28,9 +31,9 @@ public class Vuelos implements Serializable {
     private String modeloAvion;
     private boolean activo;
 
-    //@OneToMany
-    //@JoinColumn(name = "id_vuelo", updatable = false)
-    //List<Prereservas> prereservas;
+    @OneToMany
+    @JoinColumn(name = "id_vuelo", updatable = false)
+    List<Prereservas> prereservas;
     
     //@OneToMany
     //@JoinColumn(name = "id_vuelo", updatable = false)
